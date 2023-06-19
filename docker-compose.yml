@@ -1,0 +1,15 @@
+version: '3'
+services:
+  excel_python_sql_app:
+    build: ./excel_python_sql_app
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@postgres:5432/postgres
+
+  postgres:
+    image: postgres:12.15-bullseye
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=postgres
